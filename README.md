@@ -10,14 +10,14 @@ Python is the programming language that runs this tool. Don't worry - you won't 
 
 ### For Windows Users:
 1. Go to [python.org](https://python.org)
-2. Click "Download Python" (get version 3.8 or newer)
+2. Click "Download Python" (get **Python 3.12 or 3.11** - these versions work best)
 3. **IMPORTANT**: When installing, check the box that says "Add Python to PATH"
 4. Click "Install Now"
 5. Wait for installation to complete
 
 ### For Mac Users:
 1. Go to [python.org](https://python.org)
-2. Click "Download Python" (get version 3.8 or newer)
+2. Click "Download Python" (get **Python 3.12 or 3.11** - these versions work best)
 3. Open the downloaded file and follow installation steps
 4. Python should be ready to use
 
@@ -25,22 +25,50 @@ Python is the programming language that runs this tool. Don't worry - you won't 
 1. **Windows**: Press `Windows key + R`, type `cmd`, press Enter
 2. **Mac**: Press `Cmd + Space`, type `terminal`, press Enter
 3. Type: `python --version` and press Enter
-4. You should see something like "Python 3.11.0" (numbers may vary)
+4. You should see "Python 3.12.x" or "Python 3.11.x" (x can be any number)
 
-## Step 2: Install Required Tools
+## Step 2: Create a Safe Environment (Virtual Environment)
+
+Before installing tools, we'll create a safe space for this project so it doesn't interfere with other programs on your computer.
+
+### Create the Environment:
+1. Open Command Prompt (Windows) or Terminal (Mac) as described above
+2. Navigate to the folder where you saved the invitation files:
+   - Type: `cd ` (with a space after cd)
+   - Drag the folder from your file explorer into the command window
+   - Press Enter
+3. Create a virtual environment by typing: `python -m venv invitation_env`
+4. Press Enter and wait (this creates a special folder for your project)
+
+### Activate the Environment:
+**Windows:**
+```
+invitation_env\Scripts\activate
+```
+
+**Mac:**
+```
+source invitation_env/bin/activate
+```
+
+You should see `(invitation_env)` appear at the beginning of your command line. This means you're in the safe environment!
+
+## Step 3: Install Required Tools
 
 The name addition tool needs special tools to work with PDFs and images. These are listed in a file called `requirements.txt`.
 
 ### Install the Tools:
-1. Open Command Prompt (Windows) or Terminal (Mac) as described above
-2. Navigate to the folder where you saved the invitation generator files:
-   - Type: `cd ` (with a space after cd)
-   - Drag the folder from your file explorer into the command window
-   - Press Enter
+1. Make sure you're in the activated environment (you should see `(invitation_env)` in your command line)
+2. If not activated, run the activation command from Step 2 again
 3. Install the required tools by typing: `pip install -r requirements.txt`
 4. Press Enter and wait for installation to complete (may take a few minutes)
 
-## Step 3: Prepare Your Files
+**Note**: The requirements.txt file contains these specific versions:
+- pillow==10.3.0 (for image processing)
+- pdf2image==1.17.0 (for PDF conversion)  
+- pandas==2.2.2 (for reading guest lists)
+
+## Step 4: Prepare Your Files
 
 ### Create Your Template (base_invitation.pdf)
 - Design your invitation in any program (Canva, Word, Photoshop, etc.)
@@ -56,20 +84,20 @@ The name addition tool needs special tools to work with PDFs and images. These a
 **Example spreadsheet:**
 ```
 Name
-John Smith
-Sarah Johnson
-Mike Davis
-Lisa Brown
+"John Smith"
+"Sarah Johnson"
+"Mike Davis"
+"Lisa Brown"
 ```
 
-## Step 4: Organize Your Files
+## Step 5: Organize Your Files
 
 Create a folder for your project and put these files inside:
 ```
 Your Invitation Project/
 ├── base_invitation.pdf (your template)
 ├── invitees.csv (your guest list)
-├── generate_invites.py (the script)
+├── name_adder.py (the script)
 └── requirements.txt (list of tools needed)
 ```
 
@@ -80,7 +108,7 @@ Your Invitation Project/
    - Type: `cd ` (with space)
    - Drag your project folder into the command window
    - Press Enter
-3. Run the name adder by typing: `python generate_invites.py`
+3. Run the name adder by typing: `python name_adder.py`
 4. Press Enter and watch the magic happen!
 
 ## What You'll See When Running
@@ -114,7 +142,12 @@ You can adjust these settings by editing the script (ask someone tech-savvy to h
 ### "Python is not recognized" (Windows)
 - You need to reinstall Python and check "Add Python to PATH"
 
+### Environment not activated
+- Make sure you see `(invitation_env)` in your command line before running commands
+- Run the activation command again if needed
+
 ### "No module named 'pdf2image'" 
+- Make sure your environment is activated (see `(invitation_env)`)
 - Run the pip install command again: `pip install -r requirements.txt`
 
 ### "No suitable font found"
@@ -144,7 +177,17 @@ You can adjust these settings by editing the script (ask someone tech-savvy to h
 ### File Management
 - Keep all files in the same folder
 - Don't change the exact filenames the script expects
+- Don't delete or modify the `invitation_env` folder
 - Make backup copies of your original files
+
+## Why Use a Virtual Environment?
+
+The virtual environment keeps this project's tools separate from your computer's main Python installation. This prevents:
+- Conflicts with other Python programs
+- Version mismatches
+- Cluttering your system with unnecessary packages
+
+When you're done with the project, you can simply delete the entire project folder, and nothing will be left behind on your system!
 
 ## Perfect For
 
@@ -158,9 +201,11 @@ You can adjust these settings by editing the script (ask someone tech-savvy to h
 ## Getting Help
 
 If you run into issues:
-1. Double-check all filenames match exactly
-2. Make sure Python installed correctly
-3. Verify all files are in the same folder
-4. Ask a tech-savvy friend to help with customization
+1. Make sure you're using Python 3.12 or 3.11
+2. Always activate the virtual environment before running commands
+3. Double-check all filenames match exactly
+4. Make sure Python installed correctly with PATH enabled
+5. Verify all files are in the same folder
+6. Ask a tech-savvy friend to help with customization
 
 This tool can save you hours of work and create professional-looking personalized invitations for any size event!
