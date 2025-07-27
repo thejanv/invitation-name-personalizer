@@ -69,7 +69,7 @@ Create a folder for your project and put these files inside:
 Your Invitation Project/
 ├── base_invitation.pdf (your template)
 ├── invitees.csv (your guest list)
-├── name_adder.py (the script)
+├── generate_invites.py (the script)
 └── requirements.txt (list of tools needed)
 ```
 
@@ -80,7 +80,7 @@ Your Invitation Project/
    - Type: `cd ` (with space)
    - Drag your project folder into the command window
    - Press Enter
-3. Run the name adder by typing: `python name_adder.py`
+3. Run the name adder by typing: `python generate_invites.py`
 4. Press Enter and watch the magic happen!
 
 ## What You'll See When Running
